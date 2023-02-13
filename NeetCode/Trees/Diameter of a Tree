@@ -1,0 +1,21 @@
+// Problem Link: https://leetcode.com/problems/diameter-of-binary-tree/description/
+// Author: Mahesh Reddy B N
+class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        int arr[] = new int[1];
+        arr[0] = Integer.MIN_VALUE;
+        helper(root,arr);
+        return arr[0];
+    }
+    public int helper(TreeNode root,int arr[]){
+        if(root==null) return 0;
+
+        int left = helper(root.left,arr);
+        int right = helper(root.right,arr);
+
+        if(arr[0]<left+right){
+            arr[0] = left+right;
+        }
+        return 1 + Math.max(left,right);
+    }
+}
