@@ -1,0 +1,30 @@
+//Problem Link: https://leetcode.com/problems/merge-two-binary-trees/description/
+//Author: Mahesh Reddy B N
+class Solution {
+    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        if(root1==null && root2==null) return null;
+        int sum = 0;
+        if(root1!=null){
+            sum+=root1.val;
+        }
+        if(root2!=null){
+            sum+=root2.val;
+        }
+        TreeNode curr = new TreeNode(sum);
+        if(root1==null || root2==null){
+            if(root2==null){
+                curr.left = root1.left;
+                curr.right = root1.right;
+            }
+            else{
+                curr.right = root2.right;
+                curr.left = root2.left;
+            }
+        }
+        else{
+            curr.left = mergeTrees(root1.left,root2.left);
+            curr.right = mergeTrees(root1.right,root2.right);
+        }
+        return curr;
+    }
+}

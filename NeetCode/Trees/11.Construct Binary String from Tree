@@ -1,0 +1,28 @@
+//Problem Link: https://leetcode.com/problems/construct-string-from-binary-tree/description/
+//Author: Mahesh Reddy B N
+class Solution {
+    public String tree2str(TreeNode root) {
+        return f(root,"");
+    }
+    public String f(TreeNode root, String s){
+        if(root!=null){
+            s+=root.val;
+            if(root.left!=null){
+                s+="("; 
+                s+=f(root.left,"");
+                s+=")";
+            }
+            else if(root.left == null){ 
+                if(root.right!=null){
+                    s+="()";
+                }
+            }
+            if(root.right!=null){
+                s+="("; 
+                s+=f(root.right,"");
+                s+=")";
+            }
+        }
+        return s;
+    }  
+} 
