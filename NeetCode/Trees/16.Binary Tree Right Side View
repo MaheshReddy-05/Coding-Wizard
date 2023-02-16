@@ -1,0 +1,17 @@
+//Problem Link: https://leetcode.com/problems/binary-tree-right-side-view/description/
+//Author: Mahesh Reddy B N
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> al = new ArrayList<>();
+        helper(root,al,0);
+        return al;
+    }
+    public void helper(TreeNode root, List<Integer> al,int level){
+        if(root==null) return;
+        if(level==al.size()){
+            al.add(root.val);
+        }
+        helper(root.right,al,level+1);
+        helper(root.left,al,level+1);
+    }
+}
